@@ -1,0 +1,126 @@
+﻿<Window x:Class="TestSitec.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestSitec"
+        mc:Ignorable="d"
+        Title="WindowTable" MinHeight="440" MinWidth="800" 
+        Height="500" Width="850">
+
+    <Grid Margin="10,10,10,10">
+        <DataGrid x:Name="dgTable" FontWeight="Bold" AutoGenerateColumns="False" 
+                  Margin="10,10,10,60" IsReadOnly ="False"
+                  CanUserReorderColumns = "False" CanUserSortColumns ="True"
+                  CanUserAddRows ="False" CanUserDeleteRows ="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn MinWidth="40" Binding="{Binding Path = Count}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="№ п.п."
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Width="30"
+                                   Margin="1">
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding Path = FIO}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Ответсвенный исполнитель"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Width="120"
+                                   Margin="1">
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn MinWidth="150" Binding="{Binding Path = RKK}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Количество неисполненных входящих документов"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Width="140"
+                                   Margin="1">
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn MinWidth="150" Binding="{Binding Path = Appeals}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Количество неисполненных письменных обращений граждан"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Width="140"
+                                   Margin="1">
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="150" Binding="{Binding Path = Sum}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Общее количество документов и обращений"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Width="140"
+                                   Margin="1">
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Height="30" Width="130" 
+                HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom"
+                Click="Button_ClickLoad">Загрузка файлов</Button>
+
+        <Button Height="30" Width="130"
+                HorizontalAlignment="Right" Margin="0,0,320,10" VerticalAlignment="Bottom" 
+                Click="Button_ClickSave">Сохранить в файл</Button>
+
+        <ComboBox Name ="cbSort" Height="30" Width="160" 
+                  HorizontalAlignment="Right" Margin="0,0,150,10" VerticalAlignment="Bottom"
+                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsSynchronizedWithCurrentItem="True">
+            <ComboBoxItem Name="FIO" Selected="FIO_Selected">Фамилии</ComboBoxItem>
+            <ComboBoxItem Name="RKK" Selected="RKK_Selected">Количесту РКК</ComboBoxItem>
+            <ComboBoxItem Name="OB" Selected="OB_Selected">Количеству обращений</ComboBoxItem>
+            <ComboBoxItem Name="SUM" Selected="SUM_Selected">Общему количеству</ComboBoxItem>            
+        </ComboBox>
+
+        <TextBlock Height="25" Width="100"
+                   HorizontalAlignment="Right" Margin="0,0,190,10" VerticalAlignment="Bottom"
+                   TextAlignment="Center">Отсортировать по:</TextBlock>
+
+        <TextBox Name="tbExecut" Height="40" Width="280"
+                 HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom"
+                 TextAlignment="Left" Text="Данные о выполнении алгоритма"
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
+    </Grid>
+</Window>
